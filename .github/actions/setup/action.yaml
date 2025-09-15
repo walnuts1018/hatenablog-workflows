@@ -16,6 +16,7 @@ runs:
     - name: check /etc/apt/apt.conf.d/
       run: |
         ls -al /etc/apt/apt.conf.d/
+      shell: bash
     - name: setup git-restore-mtime
       run: |
         sudo apt-get install -y git-restore-mtime
