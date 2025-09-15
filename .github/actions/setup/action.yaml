@@ -3,6 +3,19 @@ name: Setup
 runs:
   using: "composite"
   steps:
+    - name: Cache /var/lib/apt
+      uses: actions/cache@v4
+      with:
+        path: /var/lib/apt
+        key: ${{ runner.os }}-var-lib-apt
+    - name: Cache /var/cache/apt
+      uses: actions/cache@v4
+      with:
+        path: /var/cache/apt
+        key: ${{ runner.os }}-var-cache-apt
+    - name: check /etc/apt/apt.conf.d/
+      run: |
+        ls -al /etc/apt/apt.conf.d/
     - name: setup git-restore-mtime
       run: |
         sudo apt-get install -y git-restore-mtime
